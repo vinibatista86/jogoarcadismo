@@ -378,26 +378,27 @@
       ],
       choices: [
   {
-    text: "À sombra amena de frondoso louro,\nMurmura o rio por leito cristalino;\nDas aves soa o melodioso coro,\nQue faz do vale um templo peregrino.",
+    text: "À sombra amena de frondoso louro,<br>Murmura o rio por leito cristalino;<br>Das aves soa o melodioso coro,<br>Que faz do vale um templo peregrino.",
     scores: { "locus amoenus": 1 },
   },
   {
-    text: "Da corte ingrata aparto o pensamento,\nE busco os prados de sereno encanto;\nTroco o rumor por brando acalento,\nE ao som das fontes entrego meu canto.",
+    text: "Da corte ingrata aparto o pensamento,<br>E busco os prados de sereno encanto;<br>Troco o rumor por brando acalento,<br>E ao som das fontes entrego meu canto.",
     scores: { "fugere urbem": 1 },
   },
   {
-    text: "Colhamos já da flor a formosura,\nAntes que o tempo lhe desfaça a graça;\nBreve declina a juvenil frescura,\nComo a alvorada que depressa passa.",
+    text: "Colhamos já da flor a formosura,<br>Antes que o tempo lhe desfaça a graça;<br>Breve declina a juvenil frescura,<br>Como a alvorada que depressa passa.",
     scores: { "carpe diem": 1 },
   },
   {
-    text: "Não busco os bens que a vã fortuna ordena,\nNem me seduz o fausto dos senhores;\nMais vale a vida simples, doce e amena,\nTecida em paz por campestres lavores.",
+    text: "Não busco os bens que a vã fortuna ordena,<br>Nem me seduz o fausto dos senhores;<br>Mais vale a vida simples, doce e amena,<br>Tecida em paz por campestres lavores.",
     scores: { "aurea mediocritas": 1 },
   },
   {
-    text: "Fuja o meu verso da afeição pomposa,\nQue em vão procura ornato e galhardia;\nMais bela surge a expressão singela e airosa,\nQuando se alia à clara melodia.",
+    text: "Fuja o meu verso da afeição pomposa,<br>Que em vão procura ornato e galhardia;<br>Mais bela surge a expressão singela e airosa,<br>Quando se alia à clara melodia.",
     scores: { "inutilia truncat": 1 },
   },
 ]
+
     },
   ];
 
