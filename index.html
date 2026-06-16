@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>O Despertar do Poeta Arcádico</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;0,700;1,400;1,500&family=EB+Garamond:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="ambient" aria-hidden="true">
+    <div class="ambient__glow"></div>
+    <div class="ambient__particles"></div>
+  </div>
+
+  <main id="app" class="app">
+    <!-- Tela inicial -->
+    <section id="screen-intro" class="screen screen--active">
+      <div class="intro">
+        <p class="intro__eyebrow">Uma jornada de iniciação poética</p>
+        <h1 class="intro__title">O Despertar do<br>Poeta Arcádico</h1>
+        <p class="intro__subtitle">
+          Coimbra, Portugal — entre cafés, versos e silêncios,
+          um bilhete misterioso convida você a descobrir
+          qual caminho da Arcádia pulsa em sua alma.
+        </p>
+        <button type="button" class="btn btn--primary" id="btn-start">
+          Começar a jornada
+        </button>
+      </div>
+    </section>
+
+    <!-- Cenas narrativas -->
+    <section id="screen-game" class="screen" hidden>
+      <header class="game-header">
+        <span class="game-header__chapter" id="chapter-label"></span>
+        <div class="game-header__progress" aria-hidden="true">
+          <div class="game-header__progress-fill" id="progress-fill"></div>
+        </div>
+      </header>
+
+      <article class="narrative" id="narrative">
+        <div class="narrative__text" id="scene-text"></div>
+        <div class="narrative__choices" id="scene-choices" role="group"></div>
+      </article>
+    </section>
+
+    <!-- Resultado final -->
+    <section id="screen-result" class="screen" hidden>
+      <div class="result">
+        <p class="result__eyebrow">Sua iniciação está completa</p>
+
+        <div class="tarot-card" id="tarot-card">
+          <div class="tarot-card__frame">
+            <div class="tarot-card__image-slot" id="patron-image-slot">
+              <img class="tarot-card__image" id="patron-image" src="" alt="" hidden>
+              <span class="tarot-card__symbol" id="patron-symbol" aria-hidden="true"></span>
+              <span class="tarot-card__image-placeholder" id="patron-image-placeholder">Imagem do patrono</span>
+            </div>
+            <div class="tarot-card__body">
+              <p class="tarot-card__lema" id="patron-lema"></p>
+              <h2 class="tarot-card__name" id="patron-name"></h2>
+              <p class="tarot-card__message" id="patron-message"></p>
+            </div>
+          </div>
+        </div>
+
+        <div class="poet-identity">
+          <p class="poet-identity__text">
+            A partir deste momento, você abandona seu antigo nome e assume sua identidade de poeta da Arcádia.
+          </p>
+          <p class="poet-identity__name">
+            Seu nome entre os pastores será: <strong id="poet-name"></strong>
+          </p>
+        </div>
+
+        <button type="button" class="btn btn--secondary" id="btn-restart">
+          Recomeçar a jornada
+        </button>
+      </div>
+    </section>
+  </main>
+
+  <script src="game.js"></script>
+</body>
+</html>

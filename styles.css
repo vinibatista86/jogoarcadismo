@@ -1,0 +1,497 @@
+/* ── Variáveis e reset ── */
+:root {
+  --parchment: #f4ead5;
+  --parchment-dark: #e8d9bc;
+  --ink: #2c2416;
+  --ink-soft: #5c4f3a;
+  --forest: #2d4a35;
+  --forest-deep: #1a2e22;
+  --gold: #b8954a;
+  --gold-light: #d4b06a;
+  --shadow: rgba(26, 30, 22, 0.35);
+  --card-border: #8b7344;
+  --transition: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 18px;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  font-family: "EB Garamond", Georgia, "Times New Roman", serif;
+  color: var(--ink);
+  background: linear-gradient(165deg, var(--forest-deep) 0%, #1e3328 40%, var(--forest) 100%);
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* ── Ambiente ── */
+.ambient {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.ambient__glow {
+  position: absolute;
+  top: -20%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 80vw;
+  height: 60vh;
+  background: radial-gradient(ellipse, rgba(184, 149, 74, 0.12) 0%, transparent 70%);
+}
+
+.ambient__particles {
+  position: absolute;
+  inset: 0;
+  background-image:
+    radial-gradient(1px 1px at 10% 20%, rgba(244, 234, 213, 0.3) 50%, transparent 50%),
+    radial-gradient(1px 1px at 80% 60%, rgba(244, 234, 213, 0.2) 50%, transparent 50%),
+    radial-gradient(1.5px 1.5px at 45% 80%, rgba(212, 176, 106, 0.25) 50%, transparent 50%),
+    radial-gradient(1px 1px at 70% 15%, rgba(244, 234, 213, 0.15) 50%, transparent 50%);
+  animation: drift 20s ease-in-out infinite alternate;
+}
+
+@keyframes drift {
+  from { opacity: 0.6; transform: translateY(0); }
+  to   { opacity: 1;   transform: translateY(-12px); }
+}
+
+/* ── Layout principal ── */
+.app {
+  position: relative;
+  z-index: 1;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1.25rem;
+}
+
+.screen {
+  width: 100%;
+  max-width: 720px;
+  opacity: 0;
+  transform: translateY(16px);
+  transition: opacity var(--transition), transform var(--transition);
+  pointer-events: none;
+}
+
+.screen--active {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.screen[hidden] {
+  display: none !important;
+}
+
+/* ── Intro ── */
+.intro {
+  text-align: center;
+  padding: 3rem 2rem;
+  background: linear-gradient(180deg, var(--parchment) 0%, var(--parchment-dark) 100%);
+  border: 1px solid var(--card-border);
+  border-radius: 4px;
+  box-shadow:
+    0 24px 64px var(--shadow),
+    inset 0 1px 0 rgba(255, 255, 255, 0.4);
+}
+
+.intro__eyebrow {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 1.25rem;
+}
+
+.intro__title {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(2.2rem, 6vw, 3.2rem);
+  font-weight: 600;
+  line-height: 1.15;
+  color: var(--forest-deep);
+  margin-bottom: 1.5rem;
+}
+
+.intro__subtitle {
+  font-size: 1.05rem;
+  color: var(--ink-soft);
+  max-width: 32rem;
+  margin: 0 auto 2.5rem;
+  font-style: italic;
+}
+
+/* ── Botões ── */
+.btn {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  padding: 0.85rem 2rem;
+  border: none;
+  border-radius: 2px;
+  cursor: pointer;
+  transition: background 0.25s, transform 0.2s, box-shadow 0.25s;
+}
+
+.btn--primary {
+  background: var(--forest);
+  color: var(--parchment);
+  box-shadow: 0 4px 16px rgba(26, 46, 34, 0.4);
+}
+
+.btn--primary:hover {
+  background: var(--forest-deep);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(26, 46, 34, 0.5);
+}
+
+.btn--secondary {
+  background: transparent;
+  color: var(--forest);
+  border: 1px solid var(--card-border);
+}
+
+.btn--secondary:hover {
+  background: rgba(45, 74, 53, 0.08);
+}
+
+/* ── Cabeçalho do jogo ── */
+.game-header {
+  margin-bottom: 1.5rem;
+}
+
+.game-header__chapter {
+  display: block;
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  margin-bottom: 0.6rem;
+}
+
+.game-header__progress {
+  height: 3px;
+  background: rgba(244, 234, 213, 0.15);
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.game-header__progress-fill {
+  height: 100%;
+  width: 0%;
+  background: linear-gradient(90deg, var(--gold), var(--gold-light));
+  border-radius: 2px;
+  transition: width 0.6s ease;
+}
+
+/* ── Narrativa ── */
+.narrative {
+  background: linear-gradient(180deg, var(--parchment) 0%, #efe3cc 100%);
+  border: 1px solid var(--card-border);
+  border-radius: 4px;
+  padding: 2.5rem 2rem;
+  box-shadow: 0 20px 56px var(--shadow);
+}
+
+.narrative__text {
+  font-size: 1.1rem;
+  color: var(--ink);
+  margin-bottom: 2rem;
+}
+
+.narrative__text p {
+  margin-bottom: 1rem;
+  text-indent: 1.5rem;
+}
+
+.narrative__text p:first-child {
+  text-indent: 0;
+}
+
+.narrative__text blockquote {
+  margin: 1.25rem 0;
+  padding: 1rem 1.25rem;
+  border-left: 3px solid var(--gold);
+  font-style: italic;
+  color: var(--ink-soft);
+  background: rgba(184, 149, 74, 0.08);
+  text-indent: 0;
+}
+
+.narrative__text .narrative__dialogue {
+  font-style: italic;
+  color: var(--ink-soft);
+  text-indent: 0;
+  margin-top: 1.25rem;
+}
+
+.narrative__choices {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.choice-btn {
+  font-family: "EB Garamond", Georgia, serif;
+  font-size: 1rem;
+  text-align: left;
+  line-height: 1.55;
+  padding: 1rem 1.25rem;
+  background: rgba(255, 255, 255, 0.45);
+  border: 1px solid rgba(139, 115, 68, 0.35);
+  border-radius: 3px;
+  color: var(--ink);
+  cursor: pointer;
+  transition: background 0.25s, border-color 0.25s, transform 0.2s, box-shadow 0.25s;
+}
+
+.choice-btn:hover {
+  background: rgba(255, 255, 255, 0.75);
+  border-color: var(--gold);
+  transform: translateX(4px);
+  box-shadow: 0 4px 12px rgba(44, 36, 22, 0.1);
+}
+
+.choice-btn:focus-visible {
+  outline: 2px solid var(--gold);
+  outline-offset: 2px;
+}
+
+/* ── Animação de transição de cena ── */
+.narrative--fade-out {
+  opacity: 0;
+  transform: translateY(8px);
+  transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.narrative--fade-in {
+  animation: fadeIn 0.6s ease forwards;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── Resultado / Carta Tarot ── */
+.result {
+  text-align: center;
+}
+
+.result__eyebrow {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 0.85rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--gold-light);
+  margin-bottom: 1.5rem;
+}
+
+.tarot-card {
+  margin-bottom: 2rem;
+  perspective: 1200px;
+}
+
+.tarot-card__frame {
+  background: linear-gradient(160deg, #faf3e4 0%, var(--parchment-dark) 50%, #dcc9a0 100%);
+  border: 2px solid var(--card-border);
+  border-radius: 6px;
+  padding: 1.5rem;
+  box-shadow:
+    0 28px 72px var(--shadow),
+    inset 0 0 0 1px rgba(255, 255, 255, 0.5);
+  animation: cardReveal 1s ease forwards;
+}
+
+@keyframes cardReveal {
+  from {
+    opacity: 0;
+    transform: rotateY(-8deg) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: rotateY(0) scale(1);
+  }
+}
+
+.tarot-card__image-slot {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 4;
+  max-height: 320px;
+  margin: 0 auto 1.5rem;
+  background:
+    linear-gradient(180deg, rgba(45, 74, 53, 0.08) 0%, rgba(26, 46, 34, 0.15) 100%),
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 8px,
+      rgba(139, 115, 68, 0.06) 8px,
+      rgba(139, 115, 68, 0.06) 9px
+    );
+  border: 1px dashed var(--card-border);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.tarot-card__image-slot--has-image {
+  aspect-ratio: auto;
+  max-height: none;
+  height: auto;
+  border-style: solid;
+  background: #1a2e22;
+  padding: 0.75rem;
+  overflow: visible;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.tarot-card__image {
+  display: block;
+  width: auto;
+  height: auto;
+  max-width: 100%;
+  max-height: min(68dvh, 560px);
+  object-fit: contain;
+  object-position: center;
+}
+
+.tarot-card__symbol {
+  font-size: 4rem;
+  line-height: 1;
+  filter: drop-shadow(0 4px 8px rgba(44, 36, 22, 0.2));
+}
+
+.tarot-card__image-placeholder {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  opacity: 0.6;
+}
+
+.tarot-card__lema {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 0.8rem;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+  color: var(--gold);
+  margin-bottom: 0.5rem;
+}
+
+.tarot-card__name {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: clamp(1.5rem, 4vw, 1.85rem);
+  font-weight: 600;
+  color: var(--forest-deep);
+  margin-bottom: 1rem;
+}
+
+.tarot-card__message {
+  font-size: 1.05rem;
+  font-style: italic;
+  color: var(--ink-soft);
+  max-width: 28rem;
+  margin: 0 auto;
+  line-height: 1.65;
+}
+
+/* Temas por patrono */
+.tarot-card--fugere-urbem .tarot-card__image-slot {
+  background: linear-gradient(180deg, #d4e8d0 0%, #a8c4a0 100%);
+}
+
+.tarot-card--inutilia-truncat .tarot-card__image-slot {
+  background: linear-gradient(180deg, #e8e0d4 0%, #c4b8a8 100%);
+}
+
+.tarot-card--carpe-diem .tarot-card__image-slot {
+  background: linear-gradient(180deg, #f5e6c8 0%, #e8c878 100%);
+}
+
+.tarot-card--locus-amoenus .tarot-card__image-slot {
+  background: linear-gradient(180deg, #c8e0d8 0%, #88b8a0 100%);
+}
+
+.tarot-card--aurea-mediocritas .tarot-card__image-slot {
+  background: linear-gradient(180deg, #e8dcc8 0%, #c8b898 100%);
+}
+
+/* ── Identidade do poeta ── */
+.poet-identity {
+  background: linear-gradient(180deg, var(--parchment) 0%, var(--parchment-dark) 100%);
+  border: 1px solid var(--card-border);
+  border-radius: 4px;
+  padding: 1.75rem 2rem;
+  margin-bottom: 2rem;
+  box-shadow: 0 12px 40px var(--shadow);
+}
+
+.poet-identity__text {
+  font-size: 1rem;
+  color: var(--ink-soft);
+  margin-bottom: 1rem;
+  font-style: italic;
+}
+
+.poet-identity__name {
+  font-size: 1.15rem;
+  color: var(--ink);
+}
+
+.poet-identity__name strong {
+  font-family: "Cormorant Garamond", Georgia, serif;
+  font-size: 1.35rem;
+  font-weight: 600;
+  color: var(--forest);
+  display: inline-block;
+  margin-top: 0.25rem;
+}
+
+/* ── Responsivo ── */
+@media (max-width: 540px) {
+  html {
+    font-size: 16px;
+  }
+
+  .narrative {
+    padding: 1.75rem 1.25rem;
+  }
+
+  .intro {
+    padding: 2rem 1.25rem;
+  }
+
+  .tarot-card__frame {
+    padding: 1.25rem;
+  }
+
+  .tarot-card__image {
+    max-height: min(55dvh, 480px);
+  }
+}
