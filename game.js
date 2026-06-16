@@ -377,27 +377,27 @@
         "Qual verso nasce naturalmente?",
       ],
       choices: [
-        {
-          text: "Entre árvores e águas tranquilas, encontro meu canto escondido na beleza dos campos.",
-          scores: { "locus amoenus": 1 },
-        },
-        {
-          text: "Vive o dia presente, pois breve é a juventude e veloz é o tempo.",
-          scores: { "carpe diem": 1 },
-        },
-        {
-          text: "Feliz aquele que abandona o ruído do mundo e encontra paz distante das cidades.",
-          scores: { "fugere urbem": 1 },
-        },
-        {
-          text: "Corto do verso aquilo que sobra, deixando apenas o que merece permanecer.",
-          scores: { "inutilia truncat": 1 },
-        },
-        {
-          text: "Pouco desejo, vida serena: encontro riqueza naquilo que basta.",
-          scores: { "aurea mediocritas": 1 },
-        },
-      ],
+  {
+    text: "À sombra amena de frondoso louro,\nMurmura o rio por leito cristalino;\nDas aves soa o melodioso coro,\nQue faz do vale um templo peregrino.",
+    scores: { "locus amoenus": 1 },
+  },
+  {
+    text: "Da corte ingrata aparto o pensamento,\nE busco os prados de sereno encanto;\nTroco o rumor por brando acalento,\nE ao som das fontes entrego meu canto.",
+    scores: { "fugere urbem": 1 },
+  },
+  {
+    text: "Colhamos já da flor a formosura,\nAntes que o tempo lhe desfaça a graça;\nBreve declina a juvenil frescura,\nComo a alvorada que depressa passa.",
+    scores: { "carpe diem": 1 },
+  },
+  {
+    text: "Não busco os bens que a vã fortuna ordena,\nNem me seduz o fausto dos senhores;\nMais vale a vida simples, doce e amena,\nTecida em paz por campestres lavores.",
+    scores: { "aurea mediocritas": 1 },
+  },
+  {
+    text: "Fuja o meu verso da afeição pomposa,\nQue em vão procura ornato e galhardia;\nMais bela surge a expressão singela e airosa,\nQuando se alia à clara melodia.",
+    scores: { "inutilia truncat": 1 },
+  },
+]
     },
   ];
 
