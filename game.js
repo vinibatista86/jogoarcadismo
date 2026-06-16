@@ -156,7 +156,7 @@
       ],
       quote:
         "Se tua alma de poeta é verdadeira, me encontre na Rua da Sofia no primeiro minuto da madrugada.",
-      paragraphs: [
+      paragraphsAfter: [
         "A criminalidade em Coimbra vem sendo combatida nos últimos anos, mas você fica curioso pela misteriosa mensagem. Após pensar muito:",
       ],
       choices: [
